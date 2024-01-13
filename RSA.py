@@ -54,31 +54,19 @@ def RSA(p, q, msg):
     n = p * q
     phi_n = (p - 1) * (q - 1)
     e = random.randrange(1, phi_n - 1)
- 
+    
 #If the gcd of e and phi of n equal to 1 continue else choose a new e
- 
     if EA(e, phi_n) == 1:
- 
 #Modular inverse of e and phi is our d
- 
         d = EEA(phi_n,e)
- 
         print("Public Key:", n, ",", e)
- 
         print("Private Key:", d)
- 
 #Encryption
- 
         y = powmod_sm(msg, e, n)
- 
         print("Encrypted message:", y)
- 
 #Decryption
- 
         x = powmod_sm(y, d, n)
- 
         print("Decrypted message:", x)
- 
     else:
         RSA(p,q,msg)
 
